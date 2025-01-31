@@ -1,0 +1,454 @@
+const person={
+    name:"sai",
+    roll:34,
+    gender:"male"
+}
+let{name,roll,gender}=person
+console.log(name," ",roll," ",gender)
+console.log(person)
+
+//sai   34   male
+{ name: 'sai', roll: 34, gender: 'male' }
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+const person={
+    n:"sai",
+    r:34,
+    g:"male"
+}
+let{'n':name,'r':roll,'g':gender}=person
+console.log(name," ",roll," ",gender)
+console.log(person)
+
+sai   34   male
+{ n: 'sai', r: 34, g: 'male' }
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const person={
+    n:"sai",
+    r:34,
+    g:"male"
+}
+let{'n':name,'r':roll,'g':gender,city="tvl"}=person
+console.log(name," ",roll," ",gender,city)
+console.log(person)
+
+//sai   34   male tvl
+{ n: 'sai', r: 34, g: 'male' }
+---------------------------------------------------------------------------------------------------------------------------------------------------
+const person={
+    n:"sai",
+    r:34,
+    g:"male",
+    city:"tvl"
+}
+let{'n':name,...a}=person
+console.log(name,a)
+
+//sai { r: 34, g: 'male', city: 'tvl' }
+==================================================================================================================================================
+let a=[1,2,3,4]
+let b=['hai','hello','welcome',a]
+ 
+console.log('added the arr: ',b)
+ b=['hai','hello','welcome',...a]
+ 
+console.log('used res operator',b)
+ 
+//added the arr:  [ 'hai', 'hello', 'welcome', [ 1, 2, 3, 4 ] ]
+used res operator [ 'hai', 'hello', 'welcome', 1, 2, 3, 4 ]
+===================================
+let a=[1,2,3,4]
+let b=['hai','hello','welcome']
+ b.push(...a)
+console.log('the ans: ',b)
+ 
+//the ans:  [ 'hai', 'hello', 'welcome', 1, 2, 3, 4 ]
+==============================
+
+function add()
+{
+    console.log('welcome')// NANR
+}
+
+console.log('hai')
+add()
+ 
+//hai
+welcome
+
+==========================
+function add(a,b)// WANR
+{
+    c=a+b
+}
+
+console.log('hai')
+add(10,12)
+
+//hai
+
+ 
+=========================
+
+function add(a,b)// WANR
+{
+    c=a+b
+    return c
+}
+
+console.log('hai')
+res=add(10,12)
+console.log(res)
+ 
+//hai
+22
+
+=====================
+
+function add(...a)// WAWR
+{
+    s=0
+    for(let i=0;i<a.length;i++)
+     s=s+a[i]
+    return s
+}
+ 
+
+console.log('hai')
+res=add(1,2,2,2,2,2,3,)
+ 
+console.log(res)
+ 
+//hai
+14
+
+ 
+====================================
+
+function add(b,...a)// WAWR
+{
+    console.log('the b is: ',b)
+    s=0
+    for(let i=0;i<a.length;i++)
+     s=s+a[i]
+    return s
+}
+ 
+
+console.log('hai')
+res=add(100,1,2,2,2,2,2,3)
+ 
+console.log(res)
+ 
+//hai
+the b is:  100
+14
+ 
+=============================
+
+function add(b,...a)// WAWR
+{
+    console.log('the b is: ',b)
+    s=0
+    for(let i=0;i<a.length;i++)
+     s=s+a[i]
+    return s
+}
+ 
+
+console.log('hai')
+res=add()
+ 
+console.log(res)
+ 
+ //hai
+the b is:  undefined
+0
+=================================
+
+function add(b,...a)// WAWR
+{
+    console.log('the b is: ',b)
+    s=0
+    for(let i=0;i<a.length;i++)
+     s=s+a[i]
+    return s
+}
+ 
+
+console.log('hai')
+res=add(10)
+ 
+console.log(res)
+ 
+//hai
+the b is:  undefined
+0
+ ===========================
+
+function add()// NAWR
+{
+    
+    return 'welcome'
+}
+ 
+
+console.log('hai')
+res=add()
+ 
+console.log(res)
+//hai
+welcome
+
+***********************************************************************************************************************************************************************************
+let a=[10,20,30,40,50,60,70,80,90]
+let[p,q,...rest]=a
+console.log(p)
+console.log(q)
+console.log(rest,typeof(rest))
+let[r1,r2]=rest
+console.log(r1)
+console.log(r2)
+console.log(rest)
+
+//10
+20
+[
+  30, 40, 50, 60,
+  70, 80, 90
+] object
+30
+40
+[
+  30, 40, 50, 60,
+  70, 80, 90
+]
+==============================================================================================================================================================================
+let a=[1,2,3,34]
+let [p,q,r,s]=a
+
+console.log(p)
+console.log(q)
+console.log(r)
+console.log(s)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function out()
+{
+    function inner()
+    {
+        console.log('im inside the inner fun!!!')
+        
+    }
+    console.log('im inside the out fun')
+   return inner
+}
+inn=out()
+inn()
+
+//im inside the out fun
+im inside the inner fun!!!
+=================
+function out()
+{
+     console.log('im inside the out fun')
+    return function()
+    {
+        console.log('im inside the inner fun!!!')
+        
+    }
+   
+   
+}
+inn=out()
+inn()
+
+//im inside the out fun
+im inside the inner fun!!!
+
+==================
+let myFun=function out() // function expression
+{
+     console.log('im inside the out fun')
+    return function()
+    {
+        console.log('im inside the inner fun!!!')
+        
+    }
+   
+   
+}
+inn=myFun()
+inn()
+
+//im inside the out fun
+im inside the inner fun!!!
+=====================
+ 
+inn=myFun()
+inn()
+let myFun=function out()
+{
+     console.log('im inside the out fun')
+    return function()
+    {
+        console.log('im inside the inner fun!!!')
+        
+    }
+}
+ //inn=out()
+ //inn()
+==============================================================================================================================================================================
+let a=()=>{
+    console.log('welcome') // NANR
+}
+
+a()
+//welcome
+==========================
+
+let a=(a,b)=>{
+    c=a+b // WANR
+}
+
+res=a(12,3)
+
+console.log('the ans: ',res)
+//the ans:  undefined
+
+==================================
+let a=(a,b)=>{
+    c=a+b // WAWR
+    return c
+}
+
+res=a(12,3)
+console.log('the ans: ',res)
+//the ans:  15
+===============================
+let a=()=>{
+      // NAWR
+    return 'hai'
+}
+
+res=a()
+console.log('the ans: ',res)
+
+//the ans:  hai
+===============
+let a=(x,y)=> x+y 
+ 
+res=a(1,2)
+console.log(res)
+
+//3
+========================
+function get(recCheckFun)
+{
+    name='sai1'
+setTimeout( ()=>{
+        if(name==='sai')
+        {
+            recCheckFun()
+        }
+    } ,2000)
+}
+function check()
+{
+    console.log('pass')
+}
+get(check)
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+function get( recCheckFun)
+{
+   
+    name='sai'
+setTimeout( ()=>{
+        if(name==='sai')
+        {
+            recCheckFun()
+        }
+    } ,2000)
+     console.log('im in get')
+}
+function check()
+{
+    console.log('pass')
+}
+get(check)
+=============================
+
+function get( recCheckFun)
+{
+    name='sai'
+        if(name==='sai')
+        {
+            recCheckFun()
+        }
+     
+     console.log('im in get')
+}
+function check()
+{
+    console.log('pass')
+}
+get(check)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+let res= new Promise((resolve,reject)=>{
+    name= undefined
+    setTimeout(()=>{
+        if(name==='sai')
+        {
+            resolve(name)
+        }
+        else
+        {
+            reject('no data')
+        }
+    } ,2000)
+})
+res
+.then((name)=>{
+   console.log('received: ',name) 
+})
+.catch((errr)=>{
+     console.log('pb is : ',errr) 
+})
+.finally(()=>{
+    console.log('always i will print : ') 
+})
+///pb is :  no data
+always i will print : 
+...........................................................................................
+const res = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const a = 'sai1'; 
+            if (a==='sai') {
+                resolve(a);
+            } else {
+                reject(new Error('no data'));
+            }
+        }, 1000);
+    });
+};
+
+const handleData = async () => {
+    try {
+        const name = await res(); // Wait for the promise to resolve
+        console.log('received', name); // Handle resolved value
+    } catch (err) {
+        console.log(err.stack); // Handle error stack
+    } finally {
+        console.log('received'); // Final message
+    }
+};
+
+handleData(); // Call the async function
+
+//ERROR!
+Error: no data
+    at Timeout._onTimeout (/tmp/EkEiZemGDT/main.js:8:24)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+received
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
